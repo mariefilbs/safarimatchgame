@@ -1,41 +1,36 @@
 import $ from 'jquery';
+import _ from 'lodash';
 
+//set up Images array
+var tileImages = [
+    'baby2.jpg',
+    'blackdahlia.jpg',
+    'blazesnake.jpg',
+    'camelkiss.jpg',
+    'chameleon.jpg',
+    'drogon.png',
+    'guineapig.png',
+    'hedgehog.png',
+    'iguana.jpg'
+]
+//console.log(tileImages);
 
-//defining the 'tile' constructor
-class TILE  {
-    constructor (x, y, face) {
-        this.x = x;
-        this.y = y;
-        this.face = face;
-        this.height = 70;
+//put the DOM interaction in a variable
+var gameboard = document.getElementById('memory-board');
+
+//initate function
+startGame();
+
+///create memory board
+function startGame () {
+    //clear the memory board
+    gameboard.innerHTML = '';
+    for(var i = 0; i <= (tileImages.length * 2); i++) {
+        displayImage(i);
     }
 }
 
-//Tile.prototype.drawFaceDown = function()
-
-//Tile.prototype.drawFaceUp = function()
-
-//Tile.prototype.isMouseOver = function(x, y)
-
-
-// defining the table//global variables
-var NUM_COLS = 5;
-var NUM_ROWS = 4;
-
-
-// array of images to generate through
-var faces = [
-    getImage("/images/baby2.jpg"),
-    getImage("/images/blackdahlia.jpg"),
-    getImage("/images/blazesnake.jpg"),
-    getImage("/images/camelkiss.jpg"),
-    getImage("/images/chameleon.jpg"),
-    getImage("/images/drogon.png"),
-    getImage("/images/guineapig.png"),
-    getImage("/images/hedgehog.png"),
-    getImage("/images/iguana.jpg"),
-    getImage("/images/leeloumacaw.jpg"),
-    getImage("/images/tarantula.jpg"),
-    getImage("/images/tortoise.jpg"),
-    getImage("/images/ziggythecaique.jpeg")
-];
+function displayImage(i) {
+    console.log(i);
+    gameboard.innerHTML += '<div class=column is-one-quarter>' + i + '</div>';
+}
