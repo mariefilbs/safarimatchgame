@@ -3,34 +3,51 @@ import _ from 'lodash';
 
 //set up Images array
 var tileImages = [
-    'baby2.jpg',
-    'blackdahlia.jpg',
-    'blazesnake.jpg',
-    'camelkiss.jpg',
-    'chameleon.jpg',
-    'drogon.png',
-    'guineapig.png',
-    'hedgehog.png',
-    'iguana.jpg'
+    '/images/baby2.jpg',
+    '/images/blackdahlia.jpg',
+    '/images/blazesnake.jpg',
+    '/images/tarantula.jpg',
+    '/images/chameleon.jpg',
+    '/images/drogon.png',
+    '/images/guineapig.png',
+    '/images/hedgehog.png',
+    '/images/iguana.jpg'
 ]
 //console.log(tileImages);
 
 //put the DOM interaction in a variable
 var gameboard = document.getElementById('memory-board');
+//double the images in the tileImages array
+var doubledArray = tileImages.concat(tileImages);
+shuffleArray(doubledArray);
 
-//initate function
+//this console.log shows that it is regenerating every time!
+//console.log(doubledArray);
+
+//initate function;
 startGame();
 
 ///create memory board
 function startGame () {
-    //clear the memory board
+    //clear the memory board for beginning of game
     gameboard.innerHTML = '';
-    for(var i = 0; i <= (tileImages.length * 2); i++) {
+    for(var i = 0; i < doubledArray.length; i++) {
         displayImage(i);
     }
 }
 
 function displayImage(i) {
-    console.log(i);
-    gameboard.innerHTML += '<div class=column is-one-quarter>' + i + '</div>';
+    //console.log(i);
+    gameboard.innerHTML += `<div class=column is-one-quarter><img src="${doubledArray[i]}"></div>`;
+}
+
+//I intend to switch this out with the lodash _.shuffle method next
+function shuffleArray(d) {
+    for (var c = d.length - 1; c > 0; c--) {
+        var b = Math.floor(Math.random() * (c + 1));
+        var a = d[c];
+        d[c] = d[b];
+        d[b] = a;
+    }
+    return d
 }
