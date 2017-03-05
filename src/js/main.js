@@ -19,7 +19,7 @@ var tileImages = [
 var gameboard = document.getElementById('memory-board');
 //double the images in the tileImages array
 var doubledArray = tileImages.concat(tileImages);
-shuffleArray(doubledArray);
+shuffleTiles(doubledArray);
 
 //this console.log shows that it is regenerating every time!
 //console.log(doubledArray);
@@ -38,11 +38,18 @@ function startGame () {
 
 function displayImage(i) {
     //console.log(i);
-    gameboard.innerHTML += `<div class=column is-one-quarter><img src="${doubledArray[i]}"></div>`;
+    gameboard.innerHTML += `<div class=column is-one-quarter><img id="tileImage" src="${doubledArray[i]}" class="flipimage"></div>`;
 }
 
+$('#memory-board img').click(function(image) {
+    console.log(this);
+    this.src = '/images/logo.png';
+
+})
+
+
 //I intend to switch this out with the lodash _.shuffle method next
-function shuffleArray(d) {
+function shuffleTiles(d) {
     for (var c = d.length - 1; c > 0; c--) {
         var b = Math.floor(Math.random() * (c + 1));
         var a = d[c];
