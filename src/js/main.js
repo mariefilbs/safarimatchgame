@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import _ from 'lodash';
 
+
 //set up Images array
 var tileImages = [
     '/images/baby2.jpg',
@@ -17,6 +18,12 @@ var tileImages = [
 
 //put the DOM interaction in a variable
 var gameboard = document.getElementById('memory-board');
+
+var cardsflippedover = 0;
+var lastcardpicked = -1;
+var timer = '';
+var score = 0;
+
 //double the images in the tileImages array
 var doubledArray = tileImages.concat(tileImages);
 shuffleTiles(doubledArray);
@@ -38,15 +45,15 @@ function startGame () {
 
 function displayImage(i) {
     //console.log(i);
-    gameboard.innerHTML += `<div class=column is-one-quarter><img id="tileImage" src="${doubledArray[i]}" class="flipimage"></div>`;
+    gameboard.innerHTML += `
+      <div class=column is-one-quarter>
+        <img id="tileImage" src='${doubledArray[i]}' class="flipimage">
+      </div>`;
+    $('#memory-board img').click(function() {
+        $('#tileImage').attr('src', '/images/logo.png');
+        console.log(this.src);
+    });
 }
-
-$('#memory-board img').click(function(image) {
-    console.log(this);
-    this.src = '/images/logo.png';
-
-})
-
 
 //I intend to switch this out with the lodash _.shuffle method next
 function shuffleTiles(d) {
