@@ -24,7 +24,7 @@ class Game {
         for(var i = 0; i < doubledArray.length; i++) {
             this.tiles.push(new Tile(i, doubledArray[i]));
         }
-        //console.log(this.tiles);
+        console.log();
         this.prevSelected = null;
         this.current = null;
     }
@@ -34,7 +34,7 @@ class Game {
         if (this.prevSelected == null){
             this.prevSelected = tile;
         } else {
-          this.current = tile;
+            this.current = tile;
         }
     }
     compareTiles() {
@@ -42,6 +42,11 @@ class Game {
         this.prevSelected = null;
         this.current = null;
         return comparison;
+    }
+
+    template() {
+        let grid = `<div class="each-grid">test</div>`;
+        return grid;
     }
 }
 

@@ -4,7 +4,6 @@ import _ from 'lodash';
 
 class Tile {
     constructor (index, image) {
-
         this.frontImage = '/images/logo.png';
         this.id = index;
         this.currentImage = this.frontImage;

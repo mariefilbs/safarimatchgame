@@ -4,3 +4,4 @@ import Game from './classes/game';
 import Tile from './classes/tiles';
 
 var game = new Game;
+$('#memory-board').html(game.template);

@@ -9,6 +9,7 @@ body {
 }
 
 h1.title.is-2 {
+  width: 50% auto;
   text-align: center;
   color: #4061AE;
   font-weight: bold;
@@ -16,29 +17,37 @@ h1.title.is-2 {
   // font-family: 'Sigmar One';
 }
 
-.column {
-  float: left;
+.each-grid {
   height: 140px;
   width: 145px;
   margin: 10px;
   padding: 0px;
   border: 1px solid black;
-
 }
 
-.column img {
-  height: 100%;
-  width: 100%;
-  padding: 0px;
-}
-
-.flipimage {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-
-
-.footer {
-  clear: both;
-}
+// .column {
+//   float: left;
+//   height: 140px;
+//   width: 145px;
+//   margin: 10px;
+//   padding: 0px;
+//   border: 1px solid black;
+//
+// }
+//
+// .column img {
+//   height: 100%;
+//   width: 100%;
+//   padding: 0px;
+// }
+//
+// .flipimage {
+//   height: 100%;
+//   width: 100%;
+//   overflow: hidden;
+// }
+//
+//
+// .footer {
+//   clear: both;
+// }
