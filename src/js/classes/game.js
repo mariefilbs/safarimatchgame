@@ -18,7 +18,7 @@ var tileImages = [
 ];
 
 //double the images in the tileImages array
-var doubledArray = _.shuffle(tileImages.concat(tileImages));
+let doubledArray = _.shuffle(tileImages.concat(tileImages));
 
 class Game {
     constructor () {
@@ -31,13 +31,16 @@ class Game {
         this.current = null;
     }
 
-    selectTile(tile) {
+    selectTile(id) {
+        let tile = _.find(this.tiles, {id: id});
+        console.log(tile);
         tile.faceUp();
         if (this.prevSelected == null){
             this.prevSelected = tile;
         } else {
             this.current = tile;
         }
+
     }
     compareTiles() {
         let comparison = this.prevSelected.backImage == this.current.backImage;
@@ -48,7 +51,7 @@ class Game {
 
     template() {
         for(var i = 0; i < this.tiles.length; i++){
-            console.log(this.tiles[i].id);
+            //console.log(this.tiles.length);
             $('#memory-board').append(`<div class="column each-grid"><img src="${this.tiles[i].currentImage}"/></div>`);
 
         }
