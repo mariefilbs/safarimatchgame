@@ -1,4 +1,5 @@
 import Tile from './tiles';
+import $ from 'jquery';
 import _ from 'lodash';
 import { game } from '../main';
 
@@ -47,9 +48,9 @@ class Game {
 
     template() {
         for(var i = 0; i < this.tiles.length; i++){
-            let grid = `<div class="each-grid"><img src="${this.tiles[i].currentImage}"/></div>`;
-            console.log(this.tiles[i]);
-            return grid;
+            console.log(this.tiles[i].id);
+            $('#memory-board').append(`<div class="column each-grid"><img src="${this.tiles[i].currentImage}"/></div>`);
+
         }
     }
 }
