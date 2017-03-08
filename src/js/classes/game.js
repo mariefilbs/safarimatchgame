@@ -1,5 +1,6 @@
 import Tile from './tiles';
 import _ from 'lodash';
+import { game } from '../main';
 
 //set up Images array
 var tileImages = [
@@ -24,7 +25,7 @@ class Game {
         for(var i = 0; i < doubledArray.length; i++) {
             this.tiles.push(new Tile(i, doubledArray[i]));
         }
-        console.log();
+        //console.log(this.tiles)
         this.prevSelected = null;
         this.current = null;
     }
@@ -45,8 +46,11 @@ class Game {
     }
 
     template() {
-        let grid = `<div class="each-grid">test</div>`;
-        return grid;
+        for(var i = 0; i < this.tiles.length; i++){
+            let grid = `<div class="each-grid"><img src="${this.tiles[i].currentImage}"/></div>`;
+            console.log(this.tiles[i]);
+            return grid;
+        }
     }
 }
 
