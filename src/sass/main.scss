@@ -4,20 +4,16 @@
   box-sizing: border-box;
 }
 
-html {
-  position: relative;
-  background-image: url('/images/background2.jpg');
-  background-position: center;
-  background-size: 100%;
+body {
+  width: 1000px;
 }
-
 
 h1.title.is-2 {
   text-align: center;
   color: #4061AE;
   font-weight: bold;
   letter-spacing: 3px;
-  font-family: 'Sigmar One', cursive;
+  // font-family: 'Sigmar One';
 }
 
 .column {
