@@ -10,11 +10,7 @@ $('#memory-board').click(function(event){
     var target = Number(event.target.id);
     //console.log(event.target.id)
     game.selectTile(target);
-    var newHTML = game.template();
-
-    $('#memory-board').html(newHTML);
-
-})
+});
 
 
 

@@ -1,7 +1,7 @@
 import Tile from './tiles';
 import $ from 'jquery';
 import _ from 'lodash';
-import { game } from '../main';
+// import { game } from '../main';
 
 //set up Images array
 var tileImages = [
@@ -32,7 +32,6 @@ class Game {
     }
 
     selectTile(id) {
-        console.log(id)
         let tile = _.find(this.tiles, { id: id });
         //brit's problem solving \/
         // let tile = _.find(this.tiles, function (obj, key, collection) {
@@ -41,22 +40,36 @@ class Game {
         //     return true;
         //   }
         // })
-        console.log(this.tiles);
-        console.log(tile);
-
         tile.faceUp();
-        if (this.prevSelected == null){
-            this.prevSelected = tile;
-        } else {
-            this.current = tile;
-        }
-
+        this.updateTiles(tile);
     }
+
+    updateTiles (tile) {
+      // First click...
+      if (this.prevSelected == null) {
+          this.prevSelected = tile;
+          this.template();
+      // Second click
+      } else {
+          this.current = tile;
+          this.checkMatch();
+      }
+    }
+
+    checkMatch () {
+      setTimeout(function(game) {
+        if (!this.compareTiles()) {
+          game.prevSelected.faceDown();
+          game.current.faceDown();
+        }
+        game.prevSelected = null;
+        game.current = null;
+        game.template();
+      }, 1000, this);
+    }
+
     compareTiles() {
-        let comparison = this.prevSelected.backImage == this.current.backImage;
-        this.prevSelected = null;
-        this.current = null;
-        return comparison;
+        return this.prevSelected.backImage == this.current.backImage;
     }
 
     template() {
@@ -67,11 +80,11 @@ class Game {
             tilesHtml += `<div><img id="${tile.id}" src="${tile.currentImage}" class="each-grid"></div>`;
         });
 
-        return `
-        <div class="column is-third">
-          ${tilesHtml}
-        </div>
-      `;
+        $('#memory-board').html(`
+            <div class="column is-third">
+              ${tilesHtml}
+            </div>
+          `);
 
         // for(var i = 0; i < this.tiles.length; i++){
         //     //console.log(this.tiles.length);

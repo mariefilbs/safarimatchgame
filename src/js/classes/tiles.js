@@ -14,6 +14,7 @@ class Tile {
     }
     faceDown() {
         this.currentImage = this.frontImage;
+        console.log(this.currentImage);
     }
 }
 
