@@ -32,8 +32,18 @@ class Game {
     }
 
     selectTile(id) {
-        let tile = _.find(this.tiles, {id: id});
+        console.log(id)
+        let tile = _.find(this.tiles, { id: id });
+        //brit's problem solving \/
+        // let tile = _.find(this.tiles, function (obj, key, collection) {
+        //   if (obj.id === id) {
+        //     console.log("found it");
+        //     return true;
+        //   }
+        // })
+        console.log(this.tiles);
         console.log(tile);
+
         tile.faceUp();
         if (this.prevSelected == null){
             this.prevSelected = tile;
@@ -50,11 +60,24 @@ class Game {
     }
 
     template() {
-        for(var i = 0; i < this.tiles.length; i++){
-            //console.log(this.tiles.length);
-            $('#memory-board').append(`<div class="column each-grid"><img src="${this.tiles[i].currentImage}"/></div>`);
+        var tilesHtml = "";
 
-        }
+        this.tiles.forEach(function (tile) {
+          //console.log(index);
+            tilesHtml += `<div><img id="${tile.id}" src="${tile.currentImage}" class="each-grid"></div>`;
+        });
+
+        return `
+        <div class="column is-third">
+          ${tilesHtml}
+        </div>
+      `;
+
+        // for(var i = 0; i < this.tiles.length; i++){
+        //     //console.log(this.tiles.length);
+        //     $('#memory-board').append(`<div class="column each-grid"><img src="${this.tiles[i].currentImage}"/></div>`);
+        //
+        // }
     }
 }
 

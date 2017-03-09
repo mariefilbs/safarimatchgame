@@ -7,7 +7,8 @@ var game = new Game;
 $('#memory-board').html(game.template());
 
 $('#memory-board').click(function(event){
-    var target = event.target.id;
+    var target = Number(event.target.id);
+    //console.log(event.target.id)
     game.selectTile(target);
     var newHTML = game.template();
 
