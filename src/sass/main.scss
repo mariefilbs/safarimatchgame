@@ -4,41 +4,28 @@
   box-sizing: border-box;
 }
 
-body {
-  width: 1000px;
-}
 
-h1.title.is-2 {
+p.title.is-2 {
+  //width: 50% auto;
   text-align: center;
   color: #4061AE;
   font-weight: bold;
   letter-spacing: 3px;
-  // font-family: 'Sigmar One';
+  font-family: 'Oxygen', sans-serif;
+  //font-size: 160%;
+  padding-top: 35px;
 }
 
-.column {
-  float: left;
-  height: 140px;
-  width: 145px;
+.each-grid {
+  height: 100px;
+  width: 105px;
   margin: 10px;
   padding: 0px;
   border: 1px solid black;
-
-}
-
-.column img {
-  height: 100%;
-  width: 100%;
-  padding: 0px;
-}
-
-.flipimage {
-  height: 100%;
-  width: 100%;
   overflow: hidden;
+  float: left;
 }
 
-
-.footer {
-  clear: both;
+.column {
+  margin-left: 65px;
 }
