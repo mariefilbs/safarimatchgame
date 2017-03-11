@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 class Tile {
     constructor (index, image) {
-        this.frontImage = '/images/logo.png';
+        this.frontImage = '';
         this.id = index;
         this.currentImage = this.frontImage;
         this.backImage = image;
@@ -14,7 +14,6 @@ class Tile {
     }
     faceDown() {
         this.currentImage = this.frontImage;
-        console.log(this.currentImage);
     }
 }
 

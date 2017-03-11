@@ -19,6 +19,7 @@ var tileImages = [
 
 //double the images in the tileImages array
 let doubledArray = _.shuffle(tileImages.concat(tileImages));
+var turnCount = 0;
 
 class Game {
     constructor () {
@@ -33,15 +34,14 @@ class Game {
 
     selectTile(id) {
         let tile = _.find(this.tiles, { id: id });
-        //brit's problem solving \/
-        // let tile = _.find(this.tiles, function (obj, key, collection) {
-        //   if (obj.id === id) {
-        //     console.log("found it");
-        //     return true;
-        //   }
-        // })
+        turnCount++;
+        console.log(turnCount);
         tile.faceUp();
         this.updateTiles(tile);
+        if (turnCount > 2) {
+            tile = null;
+        }
+
     }
 
     updateTiles (tile) {
@@ -52,23 +52,26 @@ class Game {
       // Second click
       } else {
           this.current = tile;
+          this.template();
           this.checkMatch();
+          turnCount = 0;
+
       }
     }
 
     checkMatch () {
-      setTimeout(function(game) {
-        if (!this.compareTiles()) {
-          game.prevSelected.faceDown();
-          game.current.faceDown();
-        }
-        game.prevSelected = null;
-        game.current = null;
-        game.template();
-      }, 1000, this);
+        setTimeout(function(game) {
+            if (!game.compareTiles()) {
+                game.prevSelected.faceDown();
+                game.current.faceDown();
+            }
+            game.prevSelected = null;
+            game.current = null;
+            game.template();
+        }, 1000, this);
     }
 
-    compareTiles() {
+    compareTiles () {
         return this.prevSelected.backImage == this.current.backImage;
     }
 
