@@ -36,25 +36,23 @@ class Game {
         let tile = _.find(this.tiles, { id: id });
         turnCount++;
         console.log(turnCount);
+
         tile.faceUp();
         this.updateTiles(tile);
-        if (turnCount > 2) {
-            tile = null;
-        }
-
     }
+
 
     updateTiles (tile) {
       // First click...
-      if (this.prevSelected == null) {
-          this.prevSelected = tile;
-          this.template();
+        if (this.prevSelected == null) {
+            this.prevSelected = tile;
+            this.template();
       // Second click
-      } else {
-          this.current = tile;
-          this.template();
-          this.checkMatch();
-          turnCount = 0;
+        } else {
+            this.current = tile;
+            this.template();
+            this.checkMatch();
+            turnCount = 0;
 
       }
     }
