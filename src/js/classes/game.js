@@ -35,10 +35,15 @@ class Game {
     selectTile(id) {
         let tile = _.find(this.tiles, { id: id });
         turnCount++;
-        console.log(turnCount);
-
-        tile.faceUp();
-        this.updateTiles(tile);
+        if (turnCount < 3) {
+            tile.faceUp();
+            this.updateTiles(tile);
+        }
+        // console.log(turnCount);
+        //
+        //
+        // tile.faceUp();
+        // this.updateTiles(tile);
     }
 
 
@@ -52,7 +57,7 @@ class Game {
             this.current = tile;
             this.template();
             this.checkMatch();
-            turnCount = 0;
+
 
       }
     }
@@ -66,6 +71,7 @@ class Game {
             game.prevSelected = null;
             game.current = null;
             game.template();
+            turnCount = 0;
         }, 1000, this);
     }
 
@@ -77,8 +83,7 @@ class Game {
         var tilesHtml = "";
 
         this.tiles.forEach(function (tile) {
-          //console.log(index);
-            tilesHtml += `<div><img id="${tile.id}" src="${tile.currentImage}" class="each-grid"></div>`;
+            tilesHtml += `<div class="body"><img id="${tile.id}" src="${tile.currentImage}" class="each-grid"></div>`;
         });
 
         $('#memory-board').html(`
